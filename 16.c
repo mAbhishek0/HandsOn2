@@ -19,15 +19,15 @@ int main(){
 	if(!fork()){
 		close(fd1[0]);
 		close(fd2[1]);
-		write(fd1[1], "hello from parent process!\n", 19);
+		write(fd1[1], "hello from child process!\n", 27);
 		read(fd2[0], buff2, sizeof(buff2));
-		printf("messasge form child: %s\n", buff2);
+		printf("messasge form parent: %s\n", buff2);
 	} else {
 		close(fd1[1]);
 		close(fd2[0]);
-		write(fd2[1], "hello from child process!\n", 18);
+		write(fd2[1], "hello from parent process!\n", 28);
 		read(fd1[0], buff1, sizeof(buff1));
-		printf("message from parent: %s\n", buff1);
+		printf("message from child: %s\n", buff1);
 	}
 	wait(0);
 	return 0;
@@ -35,12 +35,9 @@ int main(){
 /*
 ============================================================================
 output:
-ab@ab:~/handson2$ cc 16.c
-ab@ab:~/handson2$ ./a.out
-messasge form child: hello from child process!
-
-message from parent: hello from parent process!
-
+aab@ab:~/handson2$ ./a.out
+message from child: hello from child process!
+messasge form parent: hello from parent process!
 ============================================================================
 */
 
