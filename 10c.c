@@ -1,6 +1,6 @@
 /*
 ============================================================================
-Name : 10b.c
+Name : 10c.c
 Author : Abhishek Mandal
 Description : Write a separate program using sigaction system call to catch the following signals.
 a. SIGSEGV
