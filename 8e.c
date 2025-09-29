@@ -42,8 +42,8 @@ int main(){
 /*
 ============================================================================
 output:
-ab@ab:~/handson2$ cc 8f.c
+ab@ab:~/handson2$ cc 8e.c
 ab@ab:~/handson2$ ./a.out
-caught SIGVTLARM
+caught SIGALRM(using setitimer)
 ============================================================================
 */
