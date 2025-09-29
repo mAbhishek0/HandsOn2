@@ -29,7 +29,7 @@ int main(){
 }
 /*
 ============================================================================
-output:
+output:	s
 ab@ab:~/handson2$ cc 10b.c
 ab@ab:~/handson2$ ./a.out
 press ctrl+c to terminate the program
