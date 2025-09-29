@@ -1,6 +1,6 @@
 /*
 ============================================================================
-Name : 17b.c
+Name : 17c.c
 Author : Abhishek Mandal
 Description : Write a program to execute ls -l | wc.
 a. use dup
