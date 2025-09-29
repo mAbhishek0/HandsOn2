@@ -23,9 +23,10 @@ int main(){
 /*
 ============================================================================
 output:
-ab@ab:~/handson2$ cc 15.c
+ab@ab:~/handson2$ cc 14.c
 ab@ab:~/handson2$ ./a.out
-message from parent: hello from parent process
+i = 0
+from the pipe: Hello
 ============================================================================
 */
 
