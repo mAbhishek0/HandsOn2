@@ -1,23 +1,31 @@
 /*
 ============================================================================
-Name : 14.c
+Name : 15.c
 Author : Abhishek Mandal
-Description : Write a simple program to create a pipe, write to the pipe,
-read from pipe and display onthe monitor
+Description : Write a simple program to send some data from parent to
+the child process.
 Date: 29th September 2025
 ============================================================================
 */
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
+#include<fcntl.h>
+#include<sys/wait.h>
 int main(){
-	int i, j, fd[2];
-	char buf[50];
-	i = pipe(fd);
-	printf("i = %d\n", i);
-	j = write(fd[1], "Hello\n", 7);
-	read(fd[0], buf, j);
-	printf("from the pipe: %s\n", buf);
+	char buff[50];
+	int fd[2];
+	pipe(fd);
+	
+	if(fork()){
+		close(fd[0]);
+		write(fd[1], "hello from parent process\n", 27);
+	} else {
+		close(fd[1]);
+		read(fd[0], buff, sizeof(buff));
+		printf("message from parent: %s\n", buff);
+	}
+	wait(0);
 	return 0;
 }
 /*
