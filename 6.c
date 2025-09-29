@@ -13,7 +13,6 @@ Date: 28th September 2025
 void *foo(void *p){
 	int threadID = *((int*)p);
 	printf("thread %d is executing\n", threadID);
-	return NULL;
 }
 
 int main(){
