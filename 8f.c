@@ -1,6 +1,6 @@
 /*
 ============================================================================
-Name : 8b.c
+Name : 8d.c
 Author : Abhishek Mandal
 Description : Write a separate program using signal system call to catch the following signals.
 a. SIGSEGV
@@ -16,24 +16,35 @@ Date: 29th September 2025
 #include<stdio.h>
 #include<signal.h>
 #include<stdlib.h>
+#include<unistd.h>
+#include<sys/time.h>
+
 void handler(int signum){
-	printf("caught SIGINT:(ctrl+c)\n");
+	printf("caught SIGVTLARM\n");
 	exit(0);
 }
 
 int main(){
-	signal(SIGINT, handler);
-	printf("press ctrl+c to trigger SIGINT\n");
+	struct itimerval timer;
+	signal(SIGVTALRM, handler);
+
+		timer.it_value.tv_sec = 2;
+	timer.it_value.tv_usec = 0;
+
+	timer.it_interval.tv_sec = 0;
+	timer.it_interval.tv_usec = 0;
+
+	setitimer(ITIMER_VIRTUAL, &timer, NULL);
+
 	while(1);
 	return 0;
 }
-
 /*
 ============================================================================
 output:
-ab@ab:~/handson2$ cc 8b.c
+ab@ab:~/handson2$ cc 8f.c
 ab@ab:~/handson2$ ./a.out
-press ctrl+c to trigger SIGINT
-^Ccaught SIGINT:(ctrl+c)
+caught SIGVTLARM
 ============================================================================
 */
+

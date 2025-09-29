@@ -1,6 +1,6 @@
 /*
 ============================================================================
-Name : 8a.c
+Name : 8c.c
 Author : Abhishek Mandal
 Description : Write a separate program using signal system call to catch the following signals.
 a. SIGSEGV
