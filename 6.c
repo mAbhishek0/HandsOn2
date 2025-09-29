@@ -12,7 +12,7 @@ Date: 28th September 2025
 
 void *foo(void *p){
 	int threadID = *((int*)p);
-	printf("thread &d is executing\n", threadID);
+	printf("thread %d is executing\n", threadID);
 	return NULL;
 }
 
@@ -36,14 +36,10 @@ int main(){
 /*
 ============================================================================
 output:
-ab@ab:~/handson2$ cc 5.c
+ab@ab:~/handson2$ cc 6.c
 ab@ab:~/handson2$ ./a.out
-maximum length of the arguments to the exec family of functions:  2097152
-maximum number of simultaneous process per use id: 61002
-maximum number of open files: 1024
-size of a page: 4096 bytes
-number of clock ticks per second: 100
-total number of pages in memory: 3943625
-number of currently available pages in memory: 1173593
+thread 1 is executing
+thread 2 is executing
+thread 3 is executing
 ============================================================================
 */
