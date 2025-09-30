@@ -18,7 +18,7 @@ Date: 30th September 2025
 int main(){
 	key_t msgKey = ftok("23.c", 123456);
 	int msgid = msgget(msgKey, IPC_CREAT);
-	printf("the key is: %d\n", msgKey);
+	printf("the key is: 0x%0x\n", msgKey);
 	printf("the message queue id is: %d\n", msgid);
 	return  0;
 }
@@ -27,7 +27,7 @@ int main(){
 output:
 ab@ab:~/handson2$ cc 24.c
 ab@ab:~/handson2$ ./a.out
-the key is: 1074143704
+the key is: 0x400621d8
 the message queue id is: 2
 ============================================================================
 */
