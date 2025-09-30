@@ -21,8 +21,9 @@ Date: 30th September 2025
 #include<time.h>
 int main(){
 	key_t key = ftok(".", 12345);
-	int msgid = msgget(key, 0666 | IPC_CREAT);
+	int msqid = msgget(key, 0666 | IPC_CREAT);
 	struct msqid_ds st;
+	msgctl(msqid, IPC_STAT, &st);
 
 	printf("access permission: %o\n", st.msg_perm.mode);
 	printf("uid and gid of owner: %d, %d\n", st.msg_perm.uid, st.msg_perm.gid);
@@ -37,16 +38,15 @@ int main(){
 /*
 ============================================================================
 output:
-ab@ab:~/handson2$ cc 25.c
 ab@ab:~/handson2$ ./a.out
-access permission: 0
-uid and gid of owner: 0, 524288
-time of last message sent and received: 0, 32768
-time of last change: Thu Jan  1 05:30:00 1970
+access permission: 666
+uid and gid of owner: 1000, 1000
+time of last message sent and received: 1000, 1000
+time of last change: Tue Sep 30 18:51:32 2025
 
-current number of bytes in quue: 0
+current number of bytes in queue: 0
 number of messages in queue: 0
-max bytes allowed in queue: 0
+max bytes allowed in queue: 16384
 pid of last msgsnd nd msgrcv: 0, 0
 ============================================================================
 */
