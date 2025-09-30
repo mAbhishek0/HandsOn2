@@ -2,7 +2,7 @@
 ============================================================================
 Name : 29.c
 Author : Abhishek Mandal
-Description : Wqrite a program to remove the message queue.
+Description : Write a program to remove the message queue.
 Date: 30th September 2025
 ============================================================================
 */
