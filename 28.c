@@ -12,25 +12,29 @@ Date: 30th September 2025
 #include<sys/msg.h>
 #include<sys/ipc.h>
 #include<string.h>
-struct msg{
-	long int mType;
-	char msg[100];
-};
 int main(){
 	key_t key = ftok(".", 1234);
-	int mqid = msgget(key, IPC_CREAT |0666);
-	struct msg mymsg;
-	mymsg.mType = 10;
-	printf("enter the message:\n");
-	scanf("%[^\n]", mymsg.msg);
-	int size = strlen(mymsg.msg);
-	msgsnd(mqid, &mymsg, size + 1, 0);
+	int mqid = msgget(key, IPC_CREAT | 0666);
+	struct msqid_ds stSet;
+	struct msqid_ds stRead;
+
+	msgctl(mqid, IPC_STAT, &stRead);
+	printf("current message queue permission: %o\n",stRead.msg_perm.mode);
+
+	stSet = stRead;
+
+	stSet.msg_perm.mode = 0744;
+	msgctl(mqid, IPC_SET, &stSet);
+	msgctl(mqid, IPC_STAT, &stRead);
+	printf("new message queue permission: %o\n", stRead.msg_perm.mode);
 	return 0;
 }
-
-
 /*
 ============================================================================
 output:
+ab@ab:~/handson2$ cc 28.c
+ab@ab:~/handson2$ ./a.out
+current message queue permission: 666
+new message queue permission: 744
 ============================================================================
 */
