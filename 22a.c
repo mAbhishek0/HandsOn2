@@ -18,7 +18,7 @@ int main(){
 	int fd;
 	fd_set rfds;
 	struct timeval tv;
-	tv.tv_sec = 5;
+	tv.tv_sec = 10;
 	fd = open("myfifo1", O_RDONLY);	
 	FD_ZERO(&rfds);
 	FD_SET(fd, &rfds);
