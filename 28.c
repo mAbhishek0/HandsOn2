@@ -13,20 +13,17 @@ Date: 30th September 2025
 #include<sys/ipc.h>
 #include<string.h>
 int main(){
-	key_t key = ftok(".", 1234);
+	key_t key = ftok(".", 12);
 	int mqid = msgget(key, IPC_CREAT | 0666);
-	struct msqid_ds stSet;
-	struct msqid_ds stRead;
+	struct msqid_ds st;
 
-	msgctl(mqid, IPC_STAT, &stRead);
-	printf("current message queue permission: %o\n",stRead.msg_perm.mode);
+	msgctl(mqid, IPC_STAT, &st);
+	printf("current message queue permission: %o\n",st.msg_perm.mode);
 
-	stSet = stRead;
-
-	stSet.msg_perm.mode = 0744;
-	msgctl(mqid, IPC_SET, &stSet);
-	msgctl(mqid, IPC_STAT, &stRead);
-	printf("new message queue permission: %o\n", stRead.msg_perm.mode);
+	st.msg_perm.mode = 0744;
+	msgctl(mqid, IPC_SET, &st);
+	msgctl(mqid, IPC_STAT, &st);
+	printf("new message queue permission: %o\n", st.msg_perm.mode);
 	return 0;
 }
 /*
