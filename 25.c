@@ -30,7 +30,7 @@ int main(){
 	printf("time of last change: %s\n", ctime(&st.msg_ctime));
 	printf("current number of bytes in queue: %lu\n",st.__msg_cbytes);
 	printf("number of messages in queue: %lu\n", st.msg_qnum);
-	printf("max bytes allowed in queue: %lu", st.msg_qbytes);
+	printf("max bytes allowed in queue: %lu\n", st.msg_qbytes);
 	printf("pid of last msgsnd nd msgrcv: %d, %d\n", st.msg_lspid, st.msg_lrpid);
 	return 0;
 }
@@ -45,7 +45,8 @@ time of last change: Thu Jan  1 05:30:00 1970
 
 current number of bytes in quue: 0
 number of messages in queue: 0
-max bytes allowed in queue: 0pid of last msgsnd nd msgrcv: 0, 0
+max bytes allowed in queue: 0
+pid of last msgsnd nd msgrcv: 0, 0
 ============================================================================
 */
 
