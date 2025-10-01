@@ -2,4 +2,5 @@
 *.out
 *.exe
 .vscode/
-.swp
+*.swp
+*.c.swp
